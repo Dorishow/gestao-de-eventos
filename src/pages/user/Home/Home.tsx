@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "../../../components/Inputs/SearchBar/SearchBar";
 import { asideContent, homeTemplate, mainContent } from "./styles";
+import Banner  from "../../../components/UserBanner/Banner";
 
 export default class Home extends React.Component<any, any>{
     
@@ -21,6 +22,7 @@ export default class Home extends React.Component<any, any>{
             <div className={homeTemplate()}>
                 <section className={mainContent()}>
                     <SearchBar handler={this.searchHandler}></SearchBar>
+                    <Banner></Banner>
                 </section>
                 <section className={asideContent()}>
                     a

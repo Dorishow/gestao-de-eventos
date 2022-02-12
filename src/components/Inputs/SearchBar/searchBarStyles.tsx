@@ -12,6 +12,7 @@ export const searchInput = css ('input', {
     border: '1px solid #E7E7E7',
     borderRadius: '5px 0px 0px 5px',
     outline: 'none',
+    color: '#474747'
 })
 
 export const searchSubmit = css('button', {
