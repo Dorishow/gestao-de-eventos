@@ -3,10 +3,6 @@ import { dummyEvents } from "./dummies/dummyEvents";
 
 export default class EventService{
 
-    constructor(){
-        console.log('entered the events service')
-    }
-
     getAllEvents(){
         let allEvents = localStorage.getItem('events') || '[]'
         return JSON.parse(allEvents);

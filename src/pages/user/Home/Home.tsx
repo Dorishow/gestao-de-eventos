@@ -8,13 +8,14 @@ import Event from "../../../components/EventsContainer/IEvnent";
 
 interface HomeState{
     events: Event[]
+    visibleEvents: Event[]
 }
 
 export default class Home extends React.Component<any, HomeState>{
     
     constructor(props: any){
         super(props)
-        this.state = {events: []}
+        this.state = {events: [], visibleEvents: []}
         this.searchHandler = this.searchHandler.bind(this);
     }
 
@@ -22,12 +23,16 @@ export default class Home extends React.Component<any, HomeState>{
         event.preventDefault();
         const content = event.target[0].value;
         if(content) console.log(content)
+
+        const regex = new RegExp(`${content}`, 'g');
+        const matched = [...this.state.events].filter((event) => event.name.match(regex));
+        this.setState({visibleEvents: matched})
     }
 
     componentDidMount(){
         const eventService: EventService = new EventService();
         const allEvents = eventService.getDummyEvents();
-        this.setState({events: allEvents}, ()=> console.log(this.state.events));
+        this.setState({events: allEvents, visibleEvents: allEvents}, ()=> console.log(this.state.events));
     }
     
     render(): React.ReactNode {
@@ -38,7 +43,7 @@ export default class Home extends React.Component<any, HomeState>{
                 <section className={mainContent()}>
                     <SearchBar handler={this.searchHandler}></SearchBar>
                     <Banner></Banner>
-                    <EventContainer events={this.state.events}></EventContainer>
+                    <EventContainer events={this.state.visibleEvents}></EventContainer>
                 </section>
 
 
