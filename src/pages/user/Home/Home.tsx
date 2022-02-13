@@ -21,18 +21,19 @@ export default class Home extends React.Component<any, HomeState>{
 
     searchHandler(event: any){
         event.preventDefault();
-        const content = event.target[0].value;
-        if(content) console.log(content)
-
-        const regex = new RegExp(`${content}`, 'g');
-        const matched = [...this.state.events].filter((event) => event.name.match(regex));
+        const content = event.target[0].value
+        const regex = new RegExp(`${content.toUpperCase()}`, 'g');
+        const matched = [...this.state.events].filter((event) => 
+        event.name.toUpperCase().match(regex) 
+        || event.local.toUpperCase().match(regex)
+        || event.date.toUpperCase().match(regex))
         this.setState({visibleEvents: matched})
     }
 
     componentDidMount(){
         const eventService: EventService = new EventService();
         const allEvents = eventService.getDummyEvents();
-        this.setState({events: allEvents, visibleEvents: allEvents}, ()=> console.log(this.state.events));
+        this.setState({events: allEvents, visibleEvents: allEvents});
     }
     
     render(): React.ReactNode {
