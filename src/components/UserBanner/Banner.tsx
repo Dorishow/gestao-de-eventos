@@ -1,6 +1,6 @@
 import React from "react";
 import RedirectButton from "../Login/RedirectButton";
-import { redirectContainer, redirectStyle } from "../Login/RedirectStyle";
+import { redirectContainer } from "../Login/RedirectStyle";
 import { BannerStyle, BannerTitle } from "./BannerStyle";
 
 export default class Banner extends React.Component<any, any>{
