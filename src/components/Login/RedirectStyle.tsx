@@ -22,7 +22,8 @@ export const redirectStyle = css('button', {
     fontSize: 'x-small',
 
     '@media (max-width: 767px)':{
-        flexDirection: 'column'
+        flexDirection: 'column',
+        gap: '0px'
     },
 
     variants:{
