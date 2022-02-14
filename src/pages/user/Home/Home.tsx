@@ -39,7 +39,7 @@ export default class Home extends React.Component<any, HomeState>{
     
     render(): React.ReactNode {
         return(
-            <div className={homeTemplate()}>
+            <main className={homeTemplate()}>
                 
 
                 <section className={mainContent()}>
@@ -54,7 +54,7 @@ export default class Home extends React.Component<any, HomeState>{
                 </section>
 
 
-            </div>
+            </main>
         )
     }
 }
