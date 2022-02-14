@@ -66,3 +66,24 @@ export const buyButton = css('Link', {
     cursor: 'pointer',
     width: '100%',
 })
+
+export const ticketTitle= css('p', {
+    width: '80%',
+    backgroundColor: '#dddddd',
+    color: 'Black',
+    padding: '15px',
+    borderRadius: '5px',
+    display: 'inline-block',
+    marginTop: '5px',
+})
+
+export const removeTicket = css('p', {
+    width: '20%',
+    backgroundColor: '#dddddd',
+    color: 'Black',
+    paddingTop: '17px',
+    paddingBottom: '17px',
+    borderRadius: '5px',
+    display: 'inline-block',
+    border: '1px solid white',
+})
