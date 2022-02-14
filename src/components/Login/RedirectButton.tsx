@@ -4,6 +4,6 @@ import { redirectStyle } from "./RedirectStyle";
 
 export default function RedirectButton(props: any){
     return(
-        <Link className={redirectStyle({bordered: props.bordered })} to={props.linkToRedirect} >{props.text}</Link>
+        <a className={redirectStyle({bordered: props.bordered })} href={"/"+props.linkToRedirect} >{props.text}</a>
     )
 }
