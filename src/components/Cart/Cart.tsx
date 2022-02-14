@@ -16,12 +16,19 @@ export default class CartMenu extends React.Component<any, CartState>{
     constructor(props: any) {
         super(props)
         this.state = { myEvents: [] }
+        this.updateCart = this.updateCart.bind(this)
     }
 
     componentDidMount(){
         const cartService: CartService = new CartService()
         const cartItems = cartService.getCart()
         this.setState({myEvents: cartItems})
+    }
+    
+    updateCart(ticketId: number){
+        const cartService: CartService = new CartService()
+        cartService.deleteFromCart(ticketId)
+        this.context.updateCart(cartService.getCart())
     }
 
     render(): React.ReactNode {
@@ -39,7 +46,11 @@ export default class CartMenu extends React.Component<any, CartState>{
 
                     {
                         this.context.cart.map(
-                            (ticket: any) => ticket.name
+                            (ticket: any, index: any) => 
+                            <div key={index}>
+                                <p>{ticket.name}</p>
+                                <button onClick={() => this.updateCart(ticket.id)}>remover</button>
+                            </div>
                         )
                     }
 
