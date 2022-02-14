@@ -4,6 +4,14 @@ const storageToken = 'cart'
 
 export default class CartService{
 
+    constructor(){
+        this.getCart = this.getCart.bind(this)
+        this.getFromCart = this.getFromCart.bind(this)
+        this.updateItemOnCart = this.updateItemOnCart.bind(this)
+        this.addToCart = this.addToCart.bind(this)
+        this.deleteFromCart = this.deleteFromCart.bind(this)
+    }
+
     getCart(): Array<any>{
         let allEvents = localStorage.getItem(storageToken) || '[]'
         return JSON.parse(allEvents);
@@ -30,8 +38,9 @@ export default class CartService{
 
     deleteFromCart(id: number){
         const allEvents = this.getCart()
-        const newArray = allEvents.splice(id, 1)
-        let stringfiedArray = JSON.stringify(newArray);
+        const idToDelete = allEvents.findIndex((element: any) => element.id === id)
+        allEvents.splice(idToDelete, 1)
+        let stringfiedArray = JSON.stringify(allEvents);
         localStorage.setItem(storageToken, stringfiedArray);
     }
     
