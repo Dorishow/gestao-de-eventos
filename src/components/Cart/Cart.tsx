@@ -5,7 +5,7 @@ import CartService from "../../services/cartServices";
 import Event from "../EventsContainer/IEvnent";
 import RedirectButton from "../Login/RedirectButton";
 import { redirectContainer } from "../Login/RedirectStyle";
-import { accountLink, buyButton, cartMenuStyle, cartTitle } from "./CartStyle";
+import { accountLink, buyButton, cartMenuStyle, cartTitle, removeTicket, ticketTitle } from "./CartStyle";
 
 interface CartState {
     myEvents: Event[]
@@ -48,8 +48,8 @@ export default class CartMenu extends React.Component<any, CartState>{
                         this.context.cart.map(
                             (ticket: any, index: any) => 
                             <div key={index}>
-                                <p>{ticket.name}</p>
-                                <button onClick={() => this.updateCartMenu(ticket.id)}>remover</button>
+                                <p className={ticketTitle()}>{ticket.name}</p>
+                                <button className={removeTicket()} onClick={() => this.updateCartMenu(ticket.id)}>remover</button>
                             </div>
                         )
                     }
