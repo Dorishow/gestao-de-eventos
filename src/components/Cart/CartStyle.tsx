@@ -61,5 +61,8 @@ export const buyButton = css('Link', {
     borderRadius: '5px',
     marginTop: '25px',
     fontWeight: 'normal',
-    fontSize: 'xx-small'
+    fontSize: 'xx-small',
+    border: 'none',
+    cursor: 'pointer',
+    width: '100%',
 })
