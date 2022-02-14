@@ -44,9 +44,7 @@ export const cartTitle = css('h2', {
     fontWeight: 'bold',
     fontSize: 'xx-large',
     fontFamily: 'Roboto Condensed',
-    marginBottom: '20px',
     paddingTop: '20px',
-    paddingBottom: '20px',
     textAlign: 'center',
 })
 
@@ -68,6 +66,7 @@ export const buyButton = css('Link', {
 })
 
 export const ticketTitle= css('p', {
+    fontSize: 'x-small',
     width: '80%',
     backgroundColor: '#dddddd',
     color: 'Black',
@@ -78,11 +77,13 @@ export const ticketTitle= css('p', {
 })
 
 export const removeTicket = css('p', {
+    cursor: 'pointer',
+    fontSize: 'x-small',
     width: '20%',
     backgroundColor: '#dddddd',
     color: 'Black',
-    paddingTop: '17px',
-    paddingBottom: '17px',
+    paddingTop: '15px',
+    paddingBottom: '15px',
     borderRadius: '5px',
     display: 'inline-block',
     border: '1px solid white',
