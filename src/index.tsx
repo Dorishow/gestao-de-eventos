@@ -16,9 +16,7 @@ render(
         <Route path="criar-conta" element={<SignUp />}> </Route>
         <Route path="login" element={<Login />}> </Route>
 
-        <Route path="event" element={<EventDetails />}>
-          <Route path=":eventId" element={<EventDetails />} />
-        </Route>
+        <Route path="event/:eventId" element={<EventDetails />} />
       </Routes>
     </BrowserRouter>
   </CartProvider>,
