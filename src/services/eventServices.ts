@@ -3,7 +3,7 @@ import { dummyEvents } from "./dummies/dummyEvents";
 
 export default class EventService{
 
-    getAllEvents(){
+    getAllEvents(): Array<any>{
         let allEvents = localStorage.getItem('events') || '[]'
         return JSON.parse(allEvents);
     }
@@ -20,6 +20,14 @@ export default class EventService{
 
     getDummyEvents(){
         return dummyEvents;
+    }
+
+    updateEvent(id: number, property: any, newValue: any){
+        const allEvents = this.getAllEvents()
+        const ElementId = allEvents.indexOf( (element: any) => element.id === id)
+        allEvents[ElementId][property] = newValue
+        let stringfiedArray = JSON.stringify(allEvents);
+        localStorage.setItem('events', stringfiedArray);
     }
 
     addEvent(event: Event){
