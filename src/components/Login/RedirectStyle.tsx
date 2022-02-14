@@ -2,6 +2,7 @@ import { css, styled } from '@stitches/react'
 
 export const redirectContainer = css('Link', {
     marginTop: '30px',
+    marginBottom: '25px',
     display: 'inline-flex',
     gap: '80px',
     justifyItems: 'space-evenly',

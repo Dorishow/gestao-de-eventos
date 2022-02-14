@@ -19,13 +19,13 @@ export default class CartMenu extends React.Component<any, CartState>{
         this.updateCartMenu = this.updateCartMenu.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const cartService: CartService = new CartService()
         const cartItems = cartService.getCart()
-        this.setState({myEvents: cartItems})
+        this.setState({ myEvents: cartItems })
     }
-    
-    updateCartMenu(ticketId: number){
+
+    updateCartMenu(ticketId: number) {
         const cartService: CartService = new CartService()
         cartService.deleteFromCart(+ticketId)
         this.context.updateCart(cartService.getCart())
@@ -39,26 +39,29 @@ export default class CartMenu extends React.Component<any, CartState>{
                     <Link className={accountLink()} to={"profile"}> Minha conta </Link>
                     <h2 className={cartTitle()}>Meu carrinho</h2>
 
-                    { 
-                        this.context.cart.length === 0 && 
-                        <h5> Seu carrinho está vazio, adicione itens ao carrinho e eles aparecerão aqui </h5> 
-                    }
-
-                    {
-                        this.context.cart.map(
-                            (ticket: any, index: any) => 
-                            <div key={index}>
-                                <p className={ticketTitle()}>{ticket.name}</p>
-                                <button className={removeTicket()} onClick={() => this.updateCartMenu(ticket.id)}>remover</button>
-                            </div>
-                        )
-                    }
-
                     <section className={redirectContainer()}>
                         <RedirectButton bordered="" linkToRedirect={'criar-conta'} text={'crie sua conta'}></RedirectButton>
                         <RedirectButton bordered="yes" linkToRedirect={'login'} text={'acessar conta'}></RedirectButton>
                     </section>
-                    <Link className={buyButton()} to={"checkout"}> Confirmar compra de ingressos no carrinho </Link>
+
+                    {
+                        this.context.cart.length === 0 &&
+                        <h5> Seu carrinho está vazio, adicione itens ao carrinho e eles aparecerão aqui </h5>
+                    }
+
+
+                    {
+                        this.context.cart.map(
+                            (ticket: any, index: any) =>
+                                <div key={index}>
+                                    <p className={ticketTitle()}>{ticket.name}</p>
+                                    <button className={removeTicket()} onClick={() => this.updateCartMenu(ticket.id)}>remover</button>
+                                </div>
+                        )
+                    }
+
+
+                    <Link className={buyButton()} to={"/checkout"}> Confirmar compra de ingressos no carrinho </Link>
                 </section>
             </nav>
         )
