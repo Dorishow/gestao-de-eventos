@@ -3,11 +3,11 @@ import { css, styled } from '@stitches/react'
 export const redirectContainer = css('Link', {
     marginTop: '30px',
     display: 'inline-flex',
-    gap: '100px',
+    gap: '80px',
     justifyItems: 'space-evenly',
     '@media (max-width: 767px)':{
         flexDirection: 'column',
-        gap: '10px'
+        gap: '0px'
     }
 })
 
@@ -21,9 +21,8 @@ export const redirectStyle = css('button', {
     fontWeight: 'normal',
     fontSize: 'x-small',
 
-    '@media (max-width: 767px)':{
+    '@media (max-width: 1023px)':{
         flexDirection: 'column',
-        gap: '0px'
     },
 
     variants:{
