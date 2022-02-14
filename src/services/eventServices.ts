@@ -13,6 +13,11 @@ export default class EventService{
         return allEvents.filter( ( event: any ) => event.id === id )
     }
 
+    getOneDummyEvent(id: number){
+        let allEvents = this.getDummyEvents()
+        return allEvents.filter( ( event: any ) => event.id === id )
+    }
+
     getDummyEvents(){
         return dummyEvents;
     }
