@@ -5,6 +5,7 @@ import Banner  from "../../../components/UserBanner/Banner";
 import EventContainer from "../../../components/EventsContainer/EventsContainer"
 import EventService from "../../../services/eventServices";
 import Event from "../../../components/EventsContainer/IEvnent";
+import CartMenu from "../../../components/Cart/Cart";
 
 interface HomeState{
     events: Event[]
@@ -49,7 +50,7 @@ export default class Home extends React.Component<any, HomeState>{
 
 
                 <section className={asideContent()}>
-                    a
+                    <CartMenu></CartMenu>
                 </section>
 
 
