@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CartMenu from "../../../components/Cart/Cart";
 import EventService from "../../../services/eventServices";
@@ -8,25 +8,43 @@ import Event from "../../../components/EventsContainer/IEvnent";
 import { EntityType } from "../../../components/EventsContainer/EnumEntities";
 import { detailPanner, returnLink, ThumbnailStyle } from "./DetailsStyle";
 import { buyButton } from "../../../components/Cart/CartStyle";
+import CartService from "../../../services/cartServices";
+import CartContext, { CartProvider } from "../../../context/cartContext";
+
+const emptyEvent = {
+    id: 0, name: '', image: '', local: '',
+    availableTickets: 0, date: '', description: '',
+    entityType: EntityType.ENTERPRISE,
+    ticketsPrice: 0, timeInterval: '',
+    totalOfTickets: 100
+}
 
 export default function EventDetails() {
 
+    const cartContext = useContext(CartContext);
+
     let id = useParams()
-    const [event, setEvent] = useState<Event>(
-        {
-            id: 0, name: '', image: '', local: '',
-            availableTickets: 0, date: '', description: '',
-            entityType: EntityType.ENTERPRISE,
-            ticketsPrice: 0, timeInterval: '',
-            totalOfTickets: 100
-        }
-    )
+    const [event, setEvent] = useState<Event>( emptyEvent )
+    const [cartEvents, setCartEvent] = useState<Event>( emptyEvent )
 
     useEffect(() => {
         const eventService: EventService = new EventService()
         const [thisEvent] = eventService.getOneDummyEvent(parseInt(id.eventId || '0'))
         setEvent(thisEvent)
     }, [id.eventId]);
+
+    useEffect(() => {
+        const cartService: CartService = new CartService()
+        const [thisCart] =cartService.getCart()
+        setCartEvent(thisCart)
+    }, []);
+
+    const addToCart = () => {
+        const cartService: CartService = new CartService()
+        cartService.addToCart(event)
+        const updatedCart = cartService.getCart()
+        cartContext.updateCart(updatedCart)
+    }
 
     return (
         <main className={homeTemplate()}>
@@ -49,7 +67,7 @@ export default function EventDetails() {
                     <p>- {event.local}</p>
                 </div>
 
-                <button className={buyButton()}>Adicionar ao carrinho</button>
+                <button onClick={() => addToCart()} className={buyButton()}>Adicionar ao carrinho</button>
             </section>
 
             <section className={asideContent()}>
