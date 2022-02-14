@@ -35,5 +35,12 @@ export default class EventService{
         let newEventArray = JSON.stringify([...allEvents, event]);
         localStorage.setItem('events', newEventArray);
     }
+
+    deleteEvent(id: number){
+        const allEvents = this.getAllEvents()
+        const newArray = allEvents.splice(id, 1)
+        let stringfiedArray = JSON.stringify(newArray);
+        localStorage.setItem('events', stringfiedArray);   
+    }
     
 }

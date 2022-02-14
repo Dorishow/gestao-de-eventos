@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CartContext from "../../context/cartContext";
+import CartService from "../../services/cartServices";
 import Event from "../EventsContainer/IEvnent";
 import RedirectButton from "../Login/RedirectButton";
 import { redirectContainer } from "../Login/RedirectStyle";
@@ -16,13 +18,31 @@ export default class CartMenu extends React.Component<any, CartState>{
         this.state = { myEvents: [] }
     }
 
+    componentDidMount(){
+        const cartService: CartService = new CartService()
+        const cartItems = cartService.getCart()
+        this.setState({myEvents: cartItems})
+    }
+
     render(): React.ReactNode {
+        const { cart, updateCart } = this.context;
         return (
             <nav className={cartMenuStyle()}>
                 <section>
                     <Link className={accountLink()} to={"profile"}> Minha conta </Link>
                     <h2 className={cartTitle()}>Meu carrinho</h2>
-                    <h5> Seu carrinho está vazio, adicione itens ao carrinho e eles aparecerão aqui </h5>
+
+                    { 
+                        this.context.cart.length === 0 && 
+                        <h5> Seu carrinho está vazio, adicione itens ao carrinho e eles aparecerão aqui </h5> 
+                    }
+
+                    {
+                        this.context.cart.map(
+                            (ticket: any) => ticket.name
+                        )
+                    }
+
                     <section className={redirectContainer()}>
                         <RedirectButton bordered="" linkToRedirect={'criar-conta'} text={'crie sua conta'}></RedirectButton>
                         <RedirectButton bordered="yes" linkToRedirect={'login'} text={'acessar conta'}></RedirectButton>
@@ -33,3 +53,5 @@ export default class CartMenu extends React.Component<any, CartState>{
         )
     }
 }
+
+CartMenu.contextType = CartContext;
