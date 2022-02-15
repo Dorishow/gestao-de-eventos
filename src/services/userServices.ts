@@ -1,6 +1,8 @@
 import Event from "../components/EventsContainer/IEvnent";
+import CartService from "./cartServices";
 
 const storageToken = 'purchases'
+const cartToken = 'cart'
 
 export default class UserService{
 
@@ -14,9 +16,11 @@ export default class UserService{
         return allEvents.filter( ( event: any ) => event.id === id )
     }
 
-    addToPurchase(event: Event){
+    addToPurchase(event: Event[]){
         let allEvents = this.getPurchase();
-        let newEventArray = JSON.stringify([...allEvents, event]);
+        let newEventArray = JSON.stringify([...allEvents, ...event]);
         localStorage.setItem(storageToken, newEventArray);
-    }    
+        const cartService = new CartService()
+        cartService.clearCart();
+    }
 }
