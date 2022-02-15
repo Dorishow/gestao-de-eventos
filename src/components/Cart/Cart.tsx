@@ -36,7 +36,7 @@ export default class CartMenu extends React.Component<any, CartState>{
         return (
             <nav className={cartMenuStyle()}>
                 <section>
-                    <Link className={accountLink()} to={"profile"}> Minha conta </Link>
+                    <Link className={accountLink()} to={"/profile"}> Minha conta </Link>
                     <h2 className={cartTitle()}>Meu carrinho</h2>
 
                     <section className={redirectContainer()}>

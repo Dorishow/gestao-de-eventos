@@ -9,6 +9,7 @@ import EventDetails from "./pages/user/Events/EventDetails";
 import { CartProvider } from "./context/cartContext";
 import Checkout from "./pages/checkout/Checkout";
 import Thanks from "./pages/user/Thanks/Thanks";
+import Profile from "./pages/user/Profile/Profile";
 
 render(
   <CartProvider>
@@ -20,6 +21,7 @@ render(
         <Route path="event/:eventId" element={<EventDetails />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="thanks" element={<Thanks />} />
+        <Route path="profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   </CartProvider>,
