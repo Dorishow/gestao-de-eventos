@@ -43,5 +43,9 @@ export default class CartService{
         let stringfiedArray = JSON.stringify(allEvents);
         localStorage.setItem(storageToken, stringfiedArray);
     }
+
+    clearCart(){
+        localStorage.setItem(storageToken,'[]');
+    }
     
 }

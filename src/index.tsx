@@ -8,6 +8,7 @@ import SignUp from "./pages/user/Profile/SignUp"
 import EventDetails from "./pages/user/Events/EventDetails";
 import { CartProvider } from "./context/cartContext";
 import Checkout from "./pages/checkout/Checkout";
+import Thanks from "./pages/user/Thanks/Thanks";
 
 render(
   <CartProvider>
@@ -18,6 +19,7 @@ render(
         <Route path="login" element={<Login />}> </Route>
         <Route path="event/:eventId" element={<EventDetails />} />
         <Route path="checkout" element={<Checkout />} />
+        <Route path="thanks" element={<Thanks />} />
       </Routes>
     </BrowserRouter>
   </CartProvider>,
