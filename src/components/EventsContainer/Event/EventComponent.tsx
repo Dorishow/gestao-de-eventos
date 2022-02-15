@@ -34,7 +34,7 @@ const eventStyle = css('article', {
 export default class EventComponent extends React.Component<EventProps, any>{
     render(): React.ReactNode {
         return (
-            <Link to={`event/${this.props.event.id}`} className={eventStyle()}
+            <Link to={`/event/${this.props.event.id}`} className={eventStyle()}
                 style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url('${this.props.event.image}')` }}>
                 <article>
                     <h1> {this.props.event.name}  </h1> <br />
