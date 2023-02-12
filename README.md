@@ -1,5 +1,16 @@
 # Projeto componente da entrevista técnica para a MB LABS no ano de 2022
 
+## Proposta:
+
+Desenvolver uma plataforma para compra e venda de ingressos para eventos universitários.
+
+### Resolução:
+
+FrontEnd de uma plataforma de compra de ingressos onde um usuário pode criar sua conta e montar seu carrinho de ingressos.
+
+
+---
+##### Ficha técnica da solução
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
